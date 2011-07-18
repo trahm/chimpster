@@ -1,0 +1,39 @@
+= Chimpster Gem
+
+This gem wraps mailchimps integration with ses
+
+== Install
+
+    gem install chimpster
+    
+In addition to the +chimpster+ gem you also need to install  +mail+ gem.
+
+    gem install mail
+
+    
+== Mail Example
+
+    require 'rubygems'
+    require 'chimpster'
+    require 'mail'
+    
+    message = Mail.new
+    message.delivery_method(Mail::Chimpster, :api_key => "your-api-key")
+    # ...
+    # same as in example above
+    # ...
+    message.deliver
+
+
+== Requirements
+
+The gem relies on Mail for building the message. You will also need mailchimp and ses account
+If you plan using it in a rails project, check out the chimpster-rails gem, which is meant to integrate with ActionMailer.
+
+== Authors & Contributors
+
+* Michael Hart
+
+== Copyright
+
+Copyright (c) 2011 trahmmhart. See LICENSE for details.
