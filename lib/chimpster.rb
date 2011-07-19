@@ -26,31 +26,29 @@ module Chimpster
     end
 
     def send (message)
-         @uakari.send_email(message)
+         response = @uakari.send_email(message)
+
+         response
     end
 
     def send_through_chimpster(message) #:nodoc:
       @retries = 0
-      begin
-        options= {
-            :html       => message.body.raw_source,
-            :subject    => message.subject,
-            :from_email => (message['from'].to_s  if message.from),
-            :to_email   => message['to'].to_s.split(',')
-         }
-        self.send({
-          :track_opens => true,
-          :track_clicks => true,
-          :message => options,
-          :tags => (message.tag.to_s if message.tag)
-        })
-      rescue Exception => e
-        if @retries < max_retries
-           @retries += 1
-           retry
-        else
-          raise
-        end
+      options= {
+          :html       => message.body.raw_source,
+          :subject    => message.subject,
+          :from_email => (message['from'].to_s  if message.from),
+          :to_email   => message['to'].to_s.split(',')
+       }
+      response = self.send({
+        :track_opens => true,
+        :track_clicks => true,
+        :message => options,
+        :tags => (message.tag.to_s if message.tag)
+      })
+      c=response['status']
+      v= ['queued','sent'].include?(c)
+      if v == false
+          raise  response.to_s
       end
     end
   end

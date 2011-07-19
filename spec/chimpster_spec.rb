@@ -47,8 +47,9 @@ describe "Chimpster" do
     
     it "should wrap Chimpster.send_through_chimpster" do
       message = mail_message
-      Chimpster.stub!(:send)
-      Chimpster.should_receive(:send)
+      @error_response={'status'=>'sent'}
+      Chimpster.should_receive(:send).and_return(@error_response)
+
       mail_message.delivery_method Mail::Chimpster  , {:api_key => 'api-key'}
 
       mail_message.deliver
@@ -57,6 +58,16 @@ describe "Chimpster" do
     it "should allow setting of api_key" do
       mail_message.delivery_method Mail::Chimpster, {:api_key => 'api-key'}
       mail_message.delivery_method.settings[:api_key].should == 'api-key'
+    end
+
+    it "should throw an exception when the request fails " do
+      @error_response={'status'=>'error'}
+      Chimpster.should_receive(:send).and_return(@error_response)
+      lambda{
+        mail_message.delivery_method Mail::Chimpster  , {:api_key => 'api-key'}
+        mail_message.deliver
+      }.should raise_exception
+
     end
   end
 
