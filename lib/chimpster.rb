@@ -32,6 +32,7 @@ module Chimpster
     end
 
     def send_through_chimpster(message) #:nodoc:
+      puts 'sending email'
       @retries = 0
       options= {
           :html       => message.body.raw_source,
@@ -48,7 +49,9 @@ module Chimpster
       c=response['status']
       v= ['queued','sent'].include?(c)
       if v == false
-          raise  response.to_s
+          logger.info "ERROR Sending Email via Chimpster #{response.to_s}"
+      else
+        logger.info "Email Sent via Chimpster #{response.to_s}
       end
     end
   end

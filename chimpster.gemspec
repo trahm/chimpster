@@ -5,10 +5,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{chimpster}
-  s.version = "0.1.8"
+  s.version = "0.1.12"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Michael Hart"]
+  s.authors = ["Michael Hart, Bob Milani, Phuc Quang"]
   s.date = %q{2011-07-17}
   s.description = %q{Use this gem to send emails through SES via Mailchimp api.}
   s.email = %q{mike@fotomoto.com}
@@ -62,6 +62,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<timecop>, [">= 0"])
       s.add_development_dependency(%q<mail>, [">= 0"])
       s.add_development_dependency(%q<uakari>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 1.5"])
     else
 #      s.add_dependency(%q<rspec>, [">= 2.6"])
       s.add_dependency(%q<activesupport>, [">= 0"])
@@ -71,6 +72,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<timecop>, [">= 0"])
       s.add_dependency(%q<mail>, [">= 0"])
       s.add_dependency(%q<uakari>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 1.5"])
     end
   else
 #    s.add_dependency(%q<rspec>, [">= 2.6"])
@@ -81,6 +83,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<timecop>, [">= 0"])
     s.add_dependency(%q<mail>, [">= 0"])
     s.add_dependency(%q<uakari>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 1.5"])
   end
 end
 

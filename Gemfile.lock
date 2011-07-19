@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    chimpster (0.1.8)
+    chimpster (0.1.12)
+      json (>= 1.5)
 
 GEM
   remote: http://rubygems.org/
