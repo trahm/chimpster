@@ -60,14 +60,11 @@ describe "Chimpster" do
       mail_message.delivery_method.settings[:api_key].should == 'api-key'
     end
 
-    it "should throw an exception when the request fails " do
+    it "should return false when the request fails " do
       @error_response={'status'=>'error'}
       Chimpster.should_receive(:send).and_return(@error_response)
-      lambda{
-        mail_message.delivery_method Mail::Chimpster  , {:api_key => 'api-key'}
-        mail_message.deliver
-      }.should raise_exception
-
+      mail_message.delivery_method Mail::Chimpster  , {:api_key => 'api-key'}
+      mail_message.deliver
     end
   end
 

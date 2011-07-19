@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{chimpster}
-  s.version = "0.1.12"
+  s.version = "0.1.14"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Hart, Bob Milani, Phuc Quang"]
@@ -63,6 +63,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<mail>, [">= 0"])
       s.add_development_dependency(%q<uakari>, [">= 0"])
       s.add_dependency(%q<json>, [">= 1.5"])
+      s.add_dependency(%q<logging>, [">= 1.5.2"])
     else
 #      s.add_dependency(%q<rspec>, [">= 2.6"])
       s.add_dependency(%q<activesupport>, [">= 0"])
@@ -73,6 +74,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<mail>, [">= 0"])
       s.add_dependency(%q<uakari>, [">= 0"])
       s.add_dependency(%q<json>, [">= 1.5"])
+      s.add_dependency(%q<logging>, [">= 1.5.2"])
     end
   else
 #    s.add_dependency(%q<rspec>, [">= 2.6"])
@@ -84,6 +86,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mail>, [">= 0"])
     s.add_dependency(%q<uakari>, [">= 0"])
     s.add_dependency(%q<json>, [">= 1.5"])
+    s.add_dependency(%q<logging>, [">= 1.5.2"])
   end
 end
 

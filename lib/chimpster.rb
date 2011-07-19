@@ -5,13 +5,18 @@ end
 require_local 'message_extensions/shared'
 require_local 'message_extensions/mail'
 require_local 'handlers/mail'
+require 'logging'
 
 module Chimpster
 
   MAX_RETRIES = 2
 
   class << self
-    attr_accessor :api_key, :max_retries, :sleep_between_retries , :uakari
+    attr_accessor :api_key, :max_retries, :sleep_between_retries , :uakari, :logger
+
+    def logger
+      Logging.logger(STDOUT)
+    end
 
     def max_retries
       @max_retries ||= 3
@@ -49,10 +54,11 @@ module Chimpster
       c=response['status']
       v= ['queued','sent'].include?(c)
       if v == false
-          logger.info "ERROR Sending Email via Chimpster #{response.to_s}"
+        logger.info "ERROR Sending Email via Chimpster #{response.to_s}"
       else
-        logger.info "Email Sent via Chimpster #{response.to_s}
+        logger.info "Email Sent via Chimpster #{response.to_s}"
       end
+      v
     end
   end
 end

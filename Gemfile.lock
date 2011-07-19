@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    chimpster (0.1.12)
+    chimpster (0.1.14)
       json (>= 1.5)
+      logging (>= 1.5.2)
 
 GEM
   remote: http://rubygems.org/
@@ -42,6 +43,9 @@ GEM
       rbx-require-relative (> 0.0.4)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    little-plugger (1.1.2)
+    logging (1.5.2)
+      little-plugger (>= 1.1.2)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
